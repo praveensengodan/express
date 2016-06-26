@@ -1,4 +1,4 @@
-app.controller('LogoutController',function($scope,$location,API){
+app.controller('LogoutController',function($scope,$location,API,$rootScope){
   $scope.logout = function() {
      API.logout();
   }

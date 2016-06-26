@@ -17,12 +17,20 @@ app.post('/api/authenticate',function(req,res){
         res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
         mongoose.disconnect();
       }else{
-        if(data[0].password == req.body.password) {
-          res.status(200);
-          res.cookie('username',req.body.username, { maxAge: 300000, httpOnly: true });
-          res.send();
+        if(data.length){
+          if(data[0].password == req.body.password) {
+          req.session.username = req.body.username;
+          res.status(HttpStatus.OK);
+          // res.cookie('username',req.body.username, { maxAge: 300000, httpOnly: true });
+          res.send({username:req.body.username});
           mongoose.disconnect();
+         } else {
+            res.sendStatus(HttpStatus.UNAUTHORIZED);
+         }
+        } else {
+          res.sendStatus(HttpStatus.UNAUTHORIZED);
         }
+
       }
     });
   });
@@ -44,11 +52,11 @@ app.post('/api/signup',function(req,res){
           if (err) {
             console.error(err);
             res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
-             mongoose.disconnect();
+            mongoose.disconnect();
           } else if(result) {
             console.log(result);
             res.sendStatus(HttpStatus.CREATED);
-             mongoose.disconnect();
+            mongoose.disconnect();
           }
         });
       }

@@ -1,4 +1,4 @@
-app.factory('API',function($http,$location,$q){
+app.factory('API',function($http,$location,$rootScope){
   return {
     create : function(obj){
       $http.post('/api/create',obj).then(function(res){
@@ -9,8 +9,9 @@ app.factory('API',function($http,$location,$q){
         }
       }).catch(function(err){
          if(err.status == 401){
-          $location.path('/')
-        }
+           alert('Unauthorized access! Please Login again')
+           $location.path('/table');
+         }
         console.log(err);
         alert(err.statusText+"    "+err.status)
       });
@@ -21,24 +22,31 @@ app.factory('API',function($http,$location,$q){
         return res.data.entity;
       }).catch(function(err){
          if(err.status == 401){
-         $location.path('/')
+           alert('Unauthorized access! Please Login again');
+           $location.path('/');
         }
         console.log(err);
       })
     },
     authenticate: function(obj){
       return $http.post('/api/authenticate',obj).then(function(res){
+        debugger;
         if(res.status == '200'){
+          $rootScope.usrname = res.data.username;
           alert("Logged In !!");
           $location.path('/table');
         }
       }).catch(function(err){
+          if(err.status == '401'){
+            alert('Username or Password may be wrong');
+          }
           console.log(err);
       })
     },
     signup: function(obj){
       return $http.post('/api/signup',obj).then(function(res){
-        console.log(obj);
+        alert('Successfully signed up');
+        $location.path('/');
       }).catch(function(err){
         console.log(err);
       })

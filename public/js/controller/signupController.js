@@ -13,7 +13,4 @@ app.controller('SignupController',function($scope,$location,API){
   $scope.cancel = function(){
     $location.path('/login');
   }
-  $scope.signup = function(){
-    $location.path('/signup');
-  }
 });

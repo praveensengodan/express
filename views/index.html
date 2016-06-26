@@ -22,8 +22,9 @@
     </style>
   </head>
   <body ng-app='app'>
-    <div ng-controller='LogoutController'>
-      <input value='Logout' type="button" ng-click="logout()" ng-if="check()" class="btn btn-primary" style="float:right;"/>
+    <div ng-controller='LogoutController' style="float:right;">
+      <span ng-if="check()">Hi {{usrname}}</span>
+      <input value='Logout' type="button" ng-click="logout()" ng-if="check()" class="btn btn-primary"/>
      </div>
     <ng-view ></ng-view>
     <!-- MODULES -->

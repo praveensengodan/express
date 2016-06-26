@@ -5,7 +5,7 @@ var app = require('../app/app.js');
 
 //api for get all persons
 app.get('/api/persons',function(req,res){
-  if(res.cookies){
+  if(req.session.username){
     var db = mongoose.createConnection('localhost','mydb');
     db.on('error', console.error.bind(console, 'connection error:'));
     db.once('open', function() {
@@ -29,7 +29,7 @@ app.get('/api/persons',function(req,res){
 
 //api for adding a person
 app.post('/api/create',function(req,res){
-   if(res.cookies){
+   if(req.session.username){
     var db = mongoose.createConnection('localhost','mydb');
     db.on('error', console.error.bind(console, 'connection error:'));
     db.once('open', function() {
