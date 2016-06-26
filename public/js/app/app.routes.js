@@ -5,9 +5,17 @@ angular.module('app.routes',['ngRoute'])
           templateUrl : 'partials/create.html',
           controller : 'CreateController'
         })
-        .when('/',{
+        .when('/table',{
           templateUrl : 'partials/table.html',
           controller : 'TableController'
+        })
+        .when('/signup',{
+          templateUrl : 'partials/signup.html',
+          controller : 'SignupController'
+        })
+        .when('/',{
+          templateUrl : 'partials/login.html',
+          controller : 'LoginController'
         })
         .otherwise('/',{
           redirectTo: '/'

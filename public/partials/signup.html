@@ -1,0 +1,10 @@
+<form ng-submit="signup()">
+  <legend>Signup</legend>
+  <label>Username</label><input type="text" ng-model="username" class="form-control input"/>    
+  <label>Password</label><input type="text" ng-model="password" class="form-control input"/>
+  <label>Confirm Password</label><input type="text" ng-model="confirm_password" class="form-control input"/> 
+  <div>
+    <input type="submit" value="Signup" class="btn btn-primary"/>    
+    <input type="button" value="cancel" ng-click="cancel()" class="btn btn-default"/>   
+  </div>
+</form>
