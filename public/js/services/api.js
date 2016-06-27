@@ -5,7 +5,7 @@ app.factory('API',function($http,$location,$rootScope){
         console.log(res);
         if(res.status == 201){
           alert("created !!");
-          $location.path('#/table');
+          $location.path('/table');
         }
       }).catch(function(err){
          if(err.status == 401){

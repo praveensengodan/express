@@ -6,6 +6,6 @@ require("./controller/authenticate.js");
 require("./controller/person.js");
 
 
-var server =app.listen('3000',()=>{
+var server =app.listen('3000',function(){
   console.log("localhost runs at "+server.address().port);
 });
