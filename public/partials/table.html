@@ -13,6 +13,8 @@
       <th>Name</th>
       <th>Address</th>
       <th>Phone No</th>
+      <th>Action</th>
+
     </tr>
   </thead>
   <tbody>
@@ -20,6 +22,7 @@
       <td>{{person.name}}</td>
       <td>{{person.address}}</td>
       <td>{{person.phone_no}}</td>
+      <td><i class="fa fa-trash-o" ng-click="delete(person._id)"></i></td>
     </tr>
   </tbody>
 </table>

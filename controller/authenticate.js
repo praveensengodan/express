@@ -79,8 +79,7 @@ app.post('/api/signup',function(req,res){
 
 //api for Logout
 app.get('/api/logout',function(req,res){
- delete req.session;
- if (!req.session) {
-   res.status(HttpStatus.OK).send();
- }
+ req.session.destroy(function(){                                                                                                                                                                                                                                                                           
+    res.status(HttpStatus.OK).send();                                                                                                                                                                                                              
+  });
 });

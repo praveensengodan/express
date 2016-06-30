@@ -1,4 +1,4 @@
-app.factory('API',function($http,$location,$rootScope){
+app.factory('API',function($http,$location,UserInfo){
   return {
     create : function(obj){
       $http.post('/api/create',obj).then(function(res){
@@ -30,9 +30,8 @@ app.factory('API',function($http,$location,$rootScope){
     },
     authenticate: function(obj){
       return $http.post('/api/authenticate',obj).then(function(res){
-        debugger;
         if(res.status == '200'){
-          $rootScope.usrname = res.data.username;
+          UserInfo.username = res.data.username;
           alert("Logged In !!");
           $location.path('/table');
         }
@@ -57,6 +56,9 @@ app.factory('API',function($http,$location,$rootScope){
       }).catch(function(err){
         console.log(err);
       })
+    },
+    delete: function(id){
+      return $http.delete('/api/person/'+id);
     }
   }
 });

@@ -57,3 +57,22 @@ app.post('/api/create',function(req,res){
     res.sendStatus(HttpStatus.UNAUTHORIZED)
   }
 })
+//api for adding a person
+app.delete('/api/person/:id',function(req,res){
+  console.log('inside controller');
+   if(req.session.username){
+    var db = mongoose.createConnection('localhost','mydb');
+    db.on('error', console.error.bind(console, 'connection error:'));
+    db.once('open', function() {
+      console.log("Db is open");  
+      if(req.params.id){
+          var User = db.model('User_Details',UserDetailsSchema);
+          User.remove({_id:req.params.id},function(record,err){
+            res.sendStatus(HttpStatus.OK);
+          })
+        }
+    });
+   } else {
+    res.sendStatus(HttpStatus.UNAUTHORIZED)
+  }
+})

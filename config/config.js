@@ -15,12 +15,9 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use(cookieParser());
 app.use(session({
     secret: 'test',
-    cookie:{maxAge:30000},
+    cookie:{maxAge:300000},
     resave: true,
     saveUninitialized: true
 }));
-app.use(function(req, res, next){
-    next();
-})
 app.use(logger('dev'));
 app.use(express.static('./public'));

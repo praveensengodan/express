@@ -1,8 +1,9 @@
-app.controller('LogoutController',function($scope,$location,API,$rootScope){
+app.controller('LogoutController',function($scope,$location,API,UserInfo){
   $scope.logout = function() {
      API.logout();
   }
   $scope.check = function(){
+     $scope.username = UserInfo.username;
      var returnValue;
      if($location.path() == '/'){
         returnValue = false;

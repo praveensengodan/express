@@ -23,7 +23,7 @@
   </head>
   <body ng-app='app'>
     <div ng-controller='LogoutController' style="float:right;">
-      <span ng-if="check()">Hi {{usrname}}</span>
+      <span ng-if="check()">Hi {{username}}</span>
       <input value='Logout' type="button" ng-click="logout()" ng-if="check()" class="btn btn-primary"/>
      </div>
     <ng-view ></ng-view>
@@ -32,6 +32,7 @@
     <script src="./js/app/app.js"></script>
 
     <!-- SERVICES -->
+    <script src="./js/services/userinfo.js"></script>
     <script src="./js/services/api.js"></script>
 
 
