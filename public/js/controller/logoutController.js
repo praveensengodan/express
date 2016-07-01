@@ -3,7 +3,7 @@ app.controller('LogoutController',function($scope,$location,API,UserInfo){
      API.logout();
   }
   $scope.check = function(){
-     $scope.username = UserInfo.username;
+     $scope.username = sessionStorage.username;
      var returnValue;
      if($location.path() == '/'){
         returnValue = false;
