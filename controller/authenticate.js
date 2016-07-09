@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 var AuthenticateSchema = require('../model/authenticate.js');
 var HttpStatus = require('http-status-codes');
 var app = require('../app/app.js');

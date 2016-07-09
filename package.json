@@ -22,14 +22,13 @@
     "morgan": "^1.7.0"
   },
   "dependencies": {
-    "bcrypt": "^0.8.7",
+    "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
     "express-session": "^1.13.0",
     "http-status-codes": "^1.0.6",
     "jade": "^1.11.0",
-    "mongoose": "^4.5.1",
-    "passport": "^0.3.2"
+    "mongoose": "^4.5.1"
   }
 }
