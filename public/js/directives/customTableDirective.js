@@ -4,17 +4,17 @@ app.directive('customTable',function(){
       options: '=',
       headers: '=',
       rows: '=',
-      columns: '='
+      columns: '=',
+      action: '&'
     },
     templateUrl: '../../partials/custom-table.html' ,
     replace: 'true',
     restrict: 'E',
-    controller: 'CustomTableController'
-  }
-}).controller('CustomTableController',function($scope){
-  $scope.sort = function(sortBy){
-    $scope.options.sortBy = sortBy;
-    $scope.options.sortReverse = !$scope.options.sortReverse;
+    link: function(scope){
+      scope.sort = function(sortBy){
+        scope.options.sortBy = sortBy;
+        scope.options.sortReverse = !scope.options.sortReverse;
+      }
+    }
   }
 });
-

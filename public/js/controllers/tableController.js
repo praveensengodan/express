@@ -15,11 +15,11 @@ app.controller('TableController',function($scope,$location,API){
     sortReverse: false,
   }
   $scope.columns=['name','address','phone_no'];
-  $scope.delete = function(id){
-    API.delete(id).then(function(res){
+  $scope.delete = function(row){
+    API.delete(row._id).then(function(res){
         if(res.status == 200){
          API.getTabledata().then(function(data){
-            $scope.persons = data;
+            $scope.rows = data;
           });
         }
       }).catch(function(err) {

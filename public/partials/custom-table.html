@@ -12,14 +12,18 @@
         <thead>
             <tr>
                 <th ng-repeat="header in headers"
-                    ng-click="((header.sort == undefined || header.sort) ? false : true) || sort(header.title)">
+                    ng-click="((header.sort === undefined || header.sort) ? false : true) || sort(header.title)">
                     {{header.title}}
                     <span ng-if="header.sort !== undefined ? header.sort : true" 
-                        ng-show="options.sortBy == header.title && !options.sortReverse"
+                        ng-show="options.sortBy !== header.title"
+                        class="fa fa-sort disabled">
+                    </span>
+                    <span ng-if="header.sort !== undefined ? header.sort : true" 
+                        ng-show="options.sortBy === header.title && !options.sortReverse"
                         class="fa fa-caret-up">
                     </span>
                     <span ng-if="header.sort !== undefined ? header.sort : true"
-                        ng-show="options.sortBy == header.title && options.sortReverse"
+                        ng-show="options.sortBy === header.title && options.sortReverse"
                         class="fa fa-caret-down">
                     </span>
                 </th>
@@ -28,7 +32,7 @@
         <tbody>
             <tr ng-repeat="row in rows|orderBy:options.sortBy:options.sortReverse|filter: filterBy">
                 <td ng-repeat="column in columns">{{row[column]}}</td>
-                <td><i class="fa fa-trash-o" ng-click="delete(row._id)"></i></td>
+                <td><i class="fa fa-trash-o" ng-click="action({row:row})"></i></td>
             </tr>
         </tbody>
     </table>
