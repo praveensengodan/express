@@ -4,8 +4,9 @@
     <form class="form-group">
         <div class="input-group">
             <div class="input-group-addon"><i class="fa fa-search"></i></div>
-            <input type="text" class="form-control filter" ng-model="filterBy">
-            <input type="button" value="Add Person" class="btn btn-primary pull-right" ng-click="add()">
+            <input type="text" class="form-control filter" ng-model="filterBy"/>
+            <select ng-model="itemsPerPage" class="form-control select pull-right" ng-options="o as o for o in itemsPerPageOption"></select>
+            <input type="button" value="Add Person" class="btn btn-primary pull-right" ng-click="add()"/>
         </div>
     </form>
     <table class="table table-striped table-hover">

@@ -11,7 +11,8 @@ app.directive('customTable',function(){
     replace: 'true',
     restrict: 'E',
     link: function(scope){
-      scope.itemsPerPage = 5;
+      scope.itemsPerPageOption = [5,10,20,40,50,100];
+      scope.itemsPerPage =  scope.itemsPerPageOption[0];
       scope.currentPage = 1;
       scope.sort = function(sortBy){
         this.options.sortBy = sortBy;
