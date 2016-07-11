@@ -30,7 +30,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="row in rows|orderBy:options.sortBy:options.sortReverse|filter: filterBy">
+            <tr ng-repeat="row in tableData()|orderBy:options.sortBy:options.sortReverse|filter: filterBy">
                 <td ng-repeat="column in columns">{{row[column]}}</td>
                 <td><i class="fa fa-trash-o" ng-click="action({row:row})"></i></td>
             </tr>
@@ -45,7 +45,7 @@
                 </a>
             </li>
             <li ng-repeat="page in range()"
-                ng-class="{'disabled': page === currentPage}"
+                ng-class="{'active': page === currentPage}"
                 ng-click="setPage(page)">
                 <a>{{page}}</a>
             </li>

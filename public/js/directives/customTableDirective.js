@@ -14,37 +14,44 @@ app.directive('customTable',function(){
       scope.itemsPerPage = 5;
       scope.currentPage = 1;
       scope.sort = function(sortBy){
-        scope.options.sortBy = sortBy;
-        scope.options.sortReverse = !scope.options.sortReverse;
+        this.options.sortBy = sortBy;
+        this.options.sortReverse = !this.options.sortReverse;
       }
       scope.range = function() {
-        scope.pages = [1];     
-        if(scope.rows){
-        var length = scope.rows.length;
-        var itemsPerPage = scope.itemsPerPage;  
+        this.pages = [1];     
+        if(this.rows){
+        var length = this.rows.length;
+        var itemsPerPage = this.itemsPerPage;  
           if(length > itemsPerPage){
             for (var i = 1; i <= (length-5); i++) {
               if(i % itemsPerPage === 0) {
-                scope.pages.push(scope.pages.length+1);
+                this.pages.push(this.pages.length+1);
               } 
             }
-            (length % itemsPerPage) ? scope.pages.push(scope.pages.length+1) : null;
+            (length % itemsPerPage) ? this.pages.push(this.pages.length+1) : null;
           } 
        } 
-        return scope.pages;
+        return this.pages;
       }
       scope.prev = function(){
-        if(scope.currentPage > 1){
-          --scope.currentPage;
+        if(this.currentPage > 1){
+          --this.currentPage;
         }
       }
       scope.next = function(){
-        if(scope.currentPage < scope.pages.length){
-          ++scope.currentPage;
+        if(this.currentPage < this.pages.length){
+          ++this.currentPage;
         }
       }
       scope.setPage = function(page){
         scope.currentPage = page;
+        this.tableData();
+      }
+      scope.tableData = function() {
+        if(this.rows) {
+           var itemsToBeDisplayed = this.currentPage * this.itemsPerPage;
+           return this.rows.slice((itemsToBeDisplayed - this.itemsPerPage),itemsToBeDisplayed);
+        }
       }
     }
   }
